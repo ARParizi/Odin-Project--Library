@@ -11,3 +11,13 @@ function Book(title, author, pages, isRead) {
 function addBookToLibrary(title, author, pages, isRead) {
     myLibrary.push(new Book(title, author, pages, isRead));
 }
+
+function findIndexById(iterable, id)
+{
+    let index = 0;
+    for (const element of iterable) {
+        if (element.id === id)
+            return index;
+        index++;
+    }
+}
