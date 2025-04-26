@@ -47,12 +47,14 @@ function createCard(book) {
     toggleIsRead.type = 'button';
     toggleIsRead.setAttribute('data-id', book.id.toString());
     toggleIsRead.classList.add('toggle-read-button');
+    toggleIsRead.addEventListener('click',toggleReadClicked);
     
     const deleteCard = document.createElement('button');
     deleteCard.textContent = '---Remove---';
     deleteCard.type = 'button';
     deleteCard.setAttribute('data-id', book.id.toString());
     deleteCard.classList.add('delete-button');
+    deleteCard.addEventListener('click',deleteCardClicked);
 
     card.appendChild(title);
     card.appendChild(author);
@@ -63,6 +65,46 @@ function createCard(book) {
     return card;
 }
 
-document.querySelector('.card-folder').appendChild(createCard(new Book('asdfgb', 'ghjk', 456, true)));
-document.querySelector('.card-folder').appendChild(createCard(new Book('asdfgb', 'ghjk', 456, true)));
-document.querySelector('.card-folder').appendChild(createCard(new Book('asdfgb', 'ghjk', 456, true)));
+addBookToLibrary('asdfgb', 'ghjk', 1, true);
+addBookToLibrary('asdfgb', 'ghjk', 2, true);
+addBookToLibrary('asdfgb', 'ghjk', 3, true);
+addBookToLibrary('asdfgb', 'ghjk', 4, true);
+addBookToLibrary('asdfgb', 'ghjk', 5, true);
+addBookToLibrary('asdfgb', 'ghjk', 6, true);
+
+rerenderCards();
+function rerenderCards() {
+    const cardFolder = document.querySelector('.card-folder');
+    console.log(cardFolder.textContent);
+    cardFolder.textContent = '';
+
+    for (const element of myLibrary) {
+        cardFolder.appendChild(createCard(element));
+    }
+}
+
+function toggleReadClicked(event) {
+    const id = this.dataset.id;
+
+    for (const element of myLibrary) {
+        if(element.id === id){
+            element.isRead = !element.isRead;
+            rerenderCards();
+            break;
+        }
+    }
+}
+
+function deleteCardClicked(event) {
+    const id = this.dataset.id;
+
+    let index = 0;
+    for (const element of myLibrary) {
+        if(element.id === id){
+            myLibrary.splice(index, 1);
+            rerenderCards();
+            break;
+        }
+        index++;
+    }
+}
