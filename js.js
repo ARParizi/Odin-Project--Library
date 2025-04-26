@@ -46,11 +46,13 @@ function createCard(book) {
     const toggleIsRead = document.createElement('button');
     toggleIsRead.textContent = 'Toggle Read';
     toggleIsRead.type = 'button';
+    toggleIsRead.id = book.id.toString();
     toggleIsRead.classList.add('toggle-read-button');
     
     const deleteCard = document.createElement('button');
     deleteCard.textContent = '---Remove---';
     deleteCard.type = 'button';
+    deleteCard.id = book.id.toString();
     deleteCard.classList.add('delete-card');
 
     card.appendChild(title);
