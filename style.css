@@ -53,24 +53,39 @@ body {
     right: 0px;
 }
 
-.key{
-    display: flex;
-    width: 87px;
-    height: 87px;
-    background-color: cadetblue;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-}
-
-.key-mouse-over{
-    background-color: rgb(133, 185, 186);
-}
-
-.key:hover{
-    background-color: rgb(133, 185, 186);
-}
-
-button {
+.toggle-read-button,
+.delete-button  {
     margin-left: 100px;
+}
+
+.add-dialog-button {
+    margin-left: 0px;
+    font-size: 120px;
+}
+
+label {
+    text-transform: uppercase;
+}
+
+label.required::after {
+    content: '*';
+    color: orangered;
+    font-size: 1rem;
+}
+
+.fielditem {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    flex: 1 1 0;
+    min-width: 250px;
+    max-width: 400px;
+}
+
+.fieldline {
+    display: flex;
+    gap: 40px;
+    margin-top: 10px;
 }

@@ -10,9 +10,37 @@
     <div class="header"></div>
     <div class="main">
         <div class="card-folder"></div>
-        <button type="button" class="add-button">+</button>
     </div>
     <div class="footer"></div>
+    <dialog>
+        <form action="#" method="post">
+            <div class="fieldline">
+                <div class="fielditem">
+                    <label for="book-title" class="required">Book Title</label>
+                    <input type="text" name="book_title" id="book-title" placeholder="Title" required>
+                </div>
+            </div>
+            <div class="fieldline">
+                <div class="fielditem">
+                    <label for="author" class="required">Author</label>
+                    <input type="text" name="author" id="author" placeholder="Author name" required>
+                </div>
+            </div>
+            <div class="fieldline">
+                <div class="fielditem">
+                    <label for="pages" class="required">No. of pages</label>
+                    <input type="number" name="pages" id="pages" placeholder="123" required min="1" max="2000">
+                </div>
+            </div>
+            <div class="fieldline">
+                <div class="fielditem">
+                    <label for="isRead">Is read?</label>
+                    <input type="checkbox" name="isRead" id="isRead">
+                </div>
+            </div>
+            <button type="submit" class="dialog-submit" autofocus>Accept & Close</button>
+        </form>
+    </dialog>
     <script src="./js.js"></script>
 </body>
 </html>

@@ -70,17 +70,21 @@ addBookToLibrary('asdfgb', 'ghjk', 2, true);
 addBookToLibrary('asdfgb', 'ghjk', 3, true);
 addBookToLibrary('asdfgb', 'ghjk', 4, true);
 addBookToLibrary('asdfgb', 'ghjk', 5, true);
-addBookToLibrary('asdfgb', 'ghjk', 6, true);
 
-rerenderCards();
-function rerenderCards() {
+reRenderCards();
+function reRenderCards() {
     const cardFolder = document.querySelector('.card-folder');
-    console.log(cardFolder.textContent);
     cardFolder.textContent = '';
 
     for (const element of myLibrary) {
         cardFolder.appendChild(createCard(element));
     }
+    const addDialogButton = document.createElement('button');
+    addDialogButton.classList.add('add-dialog-button');
+    addDialogButton.type = "button";
+    addDialogButton.textContent = '+';
+    addDialogButton.addEventListener('click', addDialogButtonClicked);
+    cardFolder.appendChild(addDialogButton);
 }
 
 function toggleReadClicked(event) {
@@ -89,7 +93,7 @@ function toggleReadClicked(event) {
     for (const element of myLibrary) {
         if(element.id === id){
             element.isRead = !element.isRead;
-            rerenderCards();
+            reRenderCards();
             break;
         }
     }
@@ -102,9 +106,30 @@ function deleteCardClicked(event) {
     for (const element of myLibrary) {
         if(element.id === id){
             myLibrary.splice(index, 1);
-            rerenderCards();
+            reRenderCards();
             break;
         }
         index++;
     }
 }
+
+const dialog = document.querySelector("dialog");
+function addDialogButtonClicked(event) {
+    dialog.showModal();
+}
+
+const dialogSubmitButton = document.querySelector('.dialog-submit');
+
+dialogSubmitButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    const dialog = document.querySelector("dialog");
+    const title  = document.querySelector('#book-title') .value;
+    const author = document.querySelector('#author')     .value;
+    const pages  = document.querySelector('#pages')      .value;
+    const isRead = document.querySelector('#isRead')     .checked;
+
+    addBookToLibrary(title, author, pages, isRead);
+    reRenderCards();
+    dialog.close();
+})
