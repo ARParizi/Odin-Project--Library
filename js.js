@@ -23,7 +23,6 @@ function findIndexById(iterable, id)
 }
 
 function createCard(book) {
-    // const folder = document.querySelector('.card-folder');
     const card = document.createElement('div');
     card.classList.add('card-item');
     card.setAttribute('data-id', book.id.toString());
@@ -61,7 +60,6 @@ function createCard(book) {
     card.appendChild(isRead);
     card.appendChild(toggleIsRead);
     card.appendChild(deleteCard);
-    // folder.appendChild(card);
     return card;
 }
 
