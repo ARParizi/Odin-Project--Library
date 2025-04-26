@@ -26,7 +26,7 @@ function createCard(book) {
     // const folder = document.querySelector('.card-folder');
     const card = document.createElement('div');
     card.classList.add('card-item');
-    card.setAttribute('data-book-id', 'book.id.toString()');
+    card.setAttribute('data-id', book.id.toString());
 
     const title  = document.createElement('p');
     const author = document.createElement('p');
@@ -46,13 +46,13 @@ function createCard(book) {
     const toggleIsRead = document.createElement('button');
     toggleIsRead.textContent = 'Toggle Read';
     toggleIsRead.type = 'button';
-    toggleIsRead.setAttribute('data-book-id', 'book.id.toString()');
+    toggleIsRead.setAttribute('data-id', book.id.toString());
     toggleIsRead.classList.add('toggle-read-button');
     
     const deleteCard = document.createElement('button');
     deleteCard.textContent = '---Remove---';
     deleteCard.type = 'button';
-    deleteCard.setAttribute('data-book-id', 'book.id.toString()');
+    deleteCard.setAttribute('data-id', book.id.toString());
     deleteCard.classList.add('delete-button');
 
     card.appendChild(title);
