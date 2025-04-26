@@ -53,7 +53,7 @@ function createCard(book) {
     deleteCard.textContent = '---Remove---';
     deleteCard.type = 'button';
     deleteCard.setAttribute('data-book-id', 'book.id.toString()');
-    deleteCard.classList.add('delete-card');
+    deleteCard.classList.add('delete-button');
 
     card.appendChild(title);
     card.appendChild(author);
